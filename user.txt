@@ -1,0 +1,1 @@
+DB::table('users')->insert(['name'=>'aditiya','email'=>'aditiya@gmail.com','password'=>Hash::make('12345678'), "role" => 1])
