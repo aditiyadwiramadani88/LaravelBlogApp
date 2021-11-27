@@ -2,6 +2,11 @@
 @section('content')
 
 
+@php 
+
+
+@endphp 
+
 <div class="grid place-items-center grid-cols-1 gap-10 xl:grid-cols-3 lg:grid-cols-2 mt-11 2xl:grid-cols-4"> 
     @foreach($row as $data)
     <div class=" place-items-center bg-white shadow-md rounded-xl overflow-hidden 2xl:max-w-screen-2xl  max-w-md mx-auto md:max-w-2xl h-48 w-full justify-self-center" >
@@ -9,9 +14,14 @@
             <a href="/post/{{$data->slug}}" class="hover:underline">{{$data->title}}</a>
         </div>
         <div class="ml-4 mb-5 mr-2">
-           
             <p class="hidden all_content_get">{{$data->content}}</p>
             <p class="all_content"></p>
+            @if(\App\Models\View::where('slug_post', $data->slug)->first()) 
+            <div class="flex justify-self-start inline-block">
+                <i class="fa fa-eye"> {{ \App\Models\View::where('slug_post', $data->slug)->first()->total_views}}</i>
+                
+            </div>
+            @endif
             <div class="flex justify-end justify-self-end">
                 <form action="/admin/delete_post/{{$data->slug}}" class="inline-block" method="POST">
                 @method("DELETE")
