@@ -112,7 +112,7 @@ class Post extends Controller {
 
 
         $file = $request->file('image');
-        $filename=strtotime(date('Y-m-d-H:isa')).$file->getClientOriginalName().'.jpg';
+        $filename=strtotime(date('Y-m-d-H:isa')).$file->getClientOriginalName().date(now()).'.jpg';
         $file->move('img/', $filename);
 
         return response()->json(["success" => 1,"file" => ["url" => '/img/'.$filename]]);
