@@ -13,8 +13,8 @@ get_all_content.forEach((elem, index) => {
         for(let data of text) {
           if(data.type == 'paragraph') {
             let text_content =  data.data.text
-              if(text_content.length > 120) all_content[index].innerText =text_content.substring(0, 120) + '...'
-              else all_content[index].innerText =text_content
+              if(text_content.length > 120) all_content[index].innerHTML =text_content.substring(0, 120) + '...'
+              else all_content[index].innerHTML =text_content
               break
             }
           }
