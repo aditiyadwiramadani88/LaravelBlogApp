@@ -59,6 +59,7 @@ class Post extends Controller {
 
         // get form data 
         $form_data = $request->only('title', 'content', 'time'); 
+
         $form_data['time'] = date("j-n-Y");
 
         // get data where slug 
@@ -112,7 +113,7 @@ class Post extends Controller {
 
 
         $file = $request->file('image');
-        $filename=strtotime(date('Y-m-d-H:isa')).$file->getClientOriginalName().date(now()).'.jpg';
+        $filename=strtotime(date('Y-m-d-H:isa')).$file->getClientOriginalName().'.jpg';
         $file->move('img/', $filename);
 
         return response()->json(["success" => 1,"file" => ["url" => '/img/'.$filename]]);
