@@ -59,7 +59,6 @@ class Post extends Controller {
 
         // get form data 
         $form_data = $request->only('title', 'content', 'time'); 
-        $form_data['slug'] = Str::of($request->title.date(now()))->slug(); 
         $form_data['time'] = date("j-n-Y");
 
         // get data where slug 
