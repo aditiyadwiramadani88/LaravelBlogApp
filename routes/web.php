@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\Comment;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Post;
 use App\Http\Middleware\IsAdmin;
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
 
@@ -20,13 +21,14 @@ Route::middleware([IsAdmin::class])->prefix('/admin')->group(function() {
     
 });
 
+Route::get('all_post', [Post::class, 'AllPost']); 
+Route::post('/comment', [Comment::class, 'CreateComment']);
 Route::get('/post/{slug}', [Post::class, 'GetPost']); 
+
 Route::get('/logout', function() {
     Auth::logout();
     return redirect('/');
-
 });
-
 
 Route::get('/home', function () { 
     return redirect('/');
