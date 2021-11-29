@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
     <link rel="stylesheet" href="/css/tal.css">
+    <link class="icon" rel="shortcut icon" href="/img/icon.png" type="image/x-icon">   
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
 />
 
@@ -35,10 +36,19 @@
   <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
     <nav>
       <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" href="/admin/all_post">All Post</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" href="/admin/create_post">Create Post</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-balck" href="/logout">Logout</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 font-bold no-underline text-black" href="#">Support</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" id="all_post" href="/all_post">All Post</a></li>
+        @if(\Illuminate\Support\Facades\Auth::check())
+        @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
+
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" id="create_post" href="/admin/create_post">Create Post</a></li>
+        @endif 
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline 
+        text-balck" href="/logout">Logout</a></li>
+        @else 
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-balck" href="/login">Login</a></li>
+        @endif
+
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 font-bold no-underline text-black" id="home" href="/">Home</a></li>
       </ul>
     </nav>
   </div>
@@ -59,6 +69,10 @@
             @section('content')
             @show
         </div>
+
+@section('home')
+
+@show
 
 <!-- Required font awesome -->
 <link
@@ -132,23 +146,23 @@
         <nav class="list-none mb-10">
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >First Link</a
+              >Donate</a
             >
           </li>
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >Second Link</a
+              >Follow instagram</a
             >
           </li>
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >Third Link</a
+              >Follow github</a
+            
             >
           </li>
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >Fourth Link</a
-            >
+              >Follow twiiter</a
           </li>
         </nav>
       </div>
@@ -170,24 +184,20 @@
         <nav class="list-none mb-10">
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >First Link</a
+              >Teknology</a
             >
           </li>
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >Second Link</a
+              >Foot</a
             >
           </li>
           <li>
             <a href="" class="text-gray-600 hover:text-gray-800"
-              >Third Link</a
+              >News</a
             >
           </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Fourth Link</a
-            >
-          </li>
+
         </nav>
       </div>
     </div>
