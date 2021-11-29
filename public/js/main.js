@@ -48,16 +48,17 @@ if(msg) {
 
 get_all_content.forEach((elem, index) => { 
         let text = JSON.parse(elem.innerHTML)
+        if(delete_post[index]) { 
+            delete_post[index].addEventListener('click', ()=> { 
+              for(data of text) { 
+                if(data.type == 'image') { 
+                  let img_name = String(data.data.file.url).replace('/img/blog/', '')
+                  delete_img(img_name)
+                }
+              }
 
-        delete_post[index].addEventListener('click', ()=> { 
-          for(data of text) { 
-            if(data.type == 'image') { 
-               let img_name = String(data.data.file.url).replace('/img/blog/', '')
-               delete_img(img_name)
-            }
+            })
           }
-
-        })
 
         for(let data of text) {
           if(data.type == 'paragraph') {
