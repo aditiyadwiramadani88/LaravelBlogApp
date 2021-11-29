@@ -47,6 +47,13 @@ The first thing to do is register, I'm the first to make is admin
   <td>https://example.com/post/{slug}</td>
     <td>Get Post</td>
   </tr>
+  <td>https://example.com/login</td>
+    <td>Login</td>
+  </tr>
+  </tr>
+  <td>https://example.com/Register</td>
+    <td>Register</td>
+  </tr>
 </table>
  
 
