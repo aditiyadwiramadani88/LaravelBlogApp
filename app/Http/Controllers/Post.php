@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Models\CommentModel;
 use App\Models\PostModel;
 use App\Models\View;
 use Illuminate\Http\Request;
@@ -96,12 +97,18 @@ class Post extends Controller {
     public function DeletePost(Request $request, $slug) { 
         // get data where slug
         $post_model = PostModel::where('slug', $slug); 
+        $views_post = View::where('slug_post', $slug); 
+        $post_comment = CommentModel::where('post_slug', $slug);
 
         // check data 
         if(!$post_model->first()) { 
+            if($views_post->first()) $views_post->delete();
+            if($post_comment->first()) $post_comment->delete();
+
             $request->session()->flash('error', 'data not fout');
             return redirect('/all_post');
         }
+
 
         $post_model->delete(); 
         $request->session()->flash('success', 'success delete data'); 
