@@ -102,14 +102,14 @@ class Post extends Controller {
 
         // check data 
         if(!$post_model->first()) { 
-            if($views_post->first()) $views_post->delete();
-            if($post_comment->first()) $post_comment->delete();
 
             $request->session()->flash('error', 'data not fout');
             return redirect('/all_post');
         }
 
-
+        
+        $views_post->delete();
+        $post_comment->delete();
         $post_model->delete(); 
         $request->session()->flash('success', 'success delete data'); 
         return redirect('/admin/all_post');
