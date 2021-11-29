@@ -36,7 +36,7 @@
                         <div class="relative flex items-center">
                             <input
                                 class="w-full p-2 text-gray-800 placeholder-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
-                                type="text" name="name" placeholder="Name" >
+                                type="text" name="name" placeholder="Name" value="{{old('name')}}" >
                         </div>
                         @error('email')
                                 <div class="text-red-600">{{$message}}</div>
@@ -44,7 +44,7 @@
                         <div class="relative flex items-center">
                             <input
                             class="w-full p-2 text-gray-800 placeholder-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
-                            type="email" name="email" placeholder="Email" >
+                            type="email" name="email" placeholder="Email" value="{{old('email')}}" >
                         </div>
                         @error('password')
                                 <div class="text-red-600 mt-10">{{$message}}</div>
