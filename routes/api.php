@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/upload', [Post::class, 'Upload']);
+Route::delete('/delete_img/{file}', [Post::class, 'DeleteImg']);
