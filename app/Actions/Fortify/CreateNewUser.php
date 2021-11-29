@@ -31,12 +31,14 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ])->validate();
-
+        
+        $role = 1;
+        if(User::first()) $role += 1;
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role' => 2,
+            'role' => $role,
         ]);
     }
 }
