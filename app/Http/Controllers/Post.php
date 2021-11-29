@@ -6,6 +6,7 @@ use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File; 
 
 class Post extends Controller { 
 
@@ -59,7 +60,7 @@ class Post extends Controller {
 
         // get form data 
         $form_data = $request->only('title', 'content', 'time'); 
-
+        $form_data['slug'] = Str::of($request->title.date(now()))->slug(); 
         $form_data['time'] = date("j-n-Y");
 
         // get data where slug 
@@ -114,11 +115,17 @@ class Post extends Controller {
 
         $file = $request->file('image');
         $filename=strtotime(date('Y-m-d-H:isa')).$file->getClientOriginalName().'.jpg';
-        $file->move('img/', $filename);
+        $file->move('img/blog/', $filename);
 
-        return response()->json(["success" => 1,"file" => ["url" => '/img/'.$filename]]);
+        return response()->json(["success" => 1,"file" => ["url" => '/img/blog/'.$filename]]);
         
       
+
+    }
+
+    public function DeleteImg($file) { 
+        File::delete('img/blog/'.$file);
+        return response()->json(['status' => 'sucess delete file']);
 
     }
 
