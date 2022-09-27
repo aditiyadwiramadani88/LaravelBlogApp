@@ -27,8 +27,8 @@ function getClassNav(nav_elem) {
 }
 
 if(url_nav == '/all_post') all_post_nav.classList = getClassNav(all_post_nav)
-else if (url_nav == '/admin/create_post') create_post_nav.classList = getClassNav(create_post_nav) 
 else if (url_nav == '/') home_nav.classList = getClassNav(home_nav)
+else if (url_nav == '/admin/create_post') create_post_nav.classList = getClassNav(create_post_nav) 
 
 
 async function delete_img(files) { 
