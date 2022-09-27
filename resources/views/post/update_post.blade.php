@@ -1,5 +1,5 @@
-@extends('index')
-@section('content')
+@extends('sidebar')
+@section('sidebar')
 
 
 <div class="mt-4 mr-7 ml-6">
@@ -18,6 +18,21 @@
 
         @endif
     </div>
+
+
+    <div class="mt-6">
+    <label for="category" class="ml-2 mt-2 text-bold">Category</label>
+    @error('category')
+    <div class="text-red-600">{{$message}}</div>
+    @enderror
+        <input type="text" name="category" id="category" value="{{old('category')}}"  class="rounded-lg mx-auto bg-white w-full h-10 shadow-lg otline-none focus:outline-none focus:ring focus:border-blue-300">
+    </div>
+
+    <div class="mt-6">
+    <label for="content" class="ml-2 mt-2 text-bold">Content</label>
+    @error('content')
+    <div class="text-red-600">{{$message}}</div>
+    @enderror
 
     <div class="mt-6">
     <label for="content" class="ml-2 mt-2">Content</label>
