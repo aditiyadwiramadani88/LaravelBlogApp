@@ -20,6 +20,7 @@ class CreatePost extends Migration
             $table->text('content');
             $table->string('author');
             $table->text('slug'); 
+            $table->string('category');
             $table->timestamps();
         });
     }
