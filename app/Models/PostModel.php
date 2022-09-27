@@ -8,6 +8,6 @@ class PostModel extends Model {
     protected $table = 'post';
     protected $primarykey  = 'id';          
 
-    protected $fillable = ['title','content', 'time', 'slug', 'author'];
+    protected $fillable = ['title','content', 'time', 'slug', 'author', 'category'];
 
 }
