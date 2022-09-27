@@ -1,3 +1,5 @@
+
+
 @extends('index')
 @section('content')
 
@@ -5,7 +7,9 @@
             <main class="col-span-2 relative md:mr-2">
              <h1 class="text-3xl font-bold text-gray-800 title">{{$row->title}}</h1>
              <div class="flex mt-2 my-2 items-center gap-4">
-                 <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                 <div>
+                     <img src="/img/users.png" class="w-10 h-10" alt="users">
+                 </div>
                  <div class="text-gray-500 font font-bold">
                      By <span class="text-gray-800 cursor-pointer">{{$row->author}}</span> on {{$row->time}}
                  </div>
@@ -17,7 +21,7 @@
                  
              </blockquote> -->
              <article></article>
-             <form id="comment" method="POST" action="/comment">
+             <form id="comment" method="POST" action="/user/comment">
              @csrf
              <input type="hidden" name="post_slug" value="{{$row->slug}}">
 
@@ -25,27 +29,25 @@
                  @error('comment')
                 <div class="text-red-600">{{$message}}</div>
                 @enderror
-                 <input type="email" name="email" class="w-full bg-gray-100 p-2 my-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your email" required="true " />
-                 @error('email')
-                <div class="text-red-600">{{$message}}</div>
-                @enderror
-                 <input type="text" name="name" class="w-full bg-gray-100 p-2 px-4 text-xl text-gray-800 rounded focus:outline-none" placeholder="your name" required="true " />
-                 @error('name')
-                <div class="text-red-600">{{$message}}</div>
-                @enderror
+                 
                  <button class="my-2 py-2 text-xl text-center w-full bg-blue-700 text-gray-50 hover:bg-blue-600 focus:outline-none rounded" type="submit">Comment</button>
              </form>
 
              @if(\App\Models\CommentModel::where('post_slug', $row->slug)->first())
              <div class=" mt-16 mb-16">
-                 <p class=" text-3xl border-l-4 border-gray-800">Comment</p>
+                 <p class=" text-3xl text-bold border-l-4 border-gray-800">Comment</p>
 
                 @foreach(\App\Models\CommentModel::where('post_slug', $row->slug)->get() as $data)
                 
-                 <div class=" bg-gray-200 shadow-md rounded-lg max-w-full">
-                     <p class="bold ml-10 pt-2"><b>{{$data->name}}</b></p>
-                     <p class="ml-10 mr-10 pb-4">{{$data->comment}}</p>
-                 </div>
+                 <div class=" rounded-lg max-w-full flex">
+                     <div class="mt-4">
+                         <img src="/img/users.png"  width="50" height="50" alt="" srcset="" class=" inline-block">
+                     </div>
+                     <div class="">
+                         <p class="bold ml-10 "><b>{{$data->name}}</b></p>
+                         <p class="ml-10 mr-10 ">{{$data->comment}}</p>
+                     </div>
+                    </div>
                  
                  @endforeach
              </div>
