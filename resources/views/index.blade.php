@@ -25,7 +25,7 @@
 </head>
 <body class="bg-gray-50">
 
-<header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2 shadow-lg">
+<header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2 ">
     <div class="flex-1 flex justify-between items-center">
   
   </div>
@@ -68,7 +68,9 @@
         @endif
             @section('content')
             @show
+            
         </div>
+
 
 @section('home')
 
@@ -93,31 +95,10 @@
       flex-wrap flex-col
     "
   >
-    <div
-      class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left"
-    >
-      <a
-        href=""
-        class="
-          flex
-          title-font
-          font-medium
-          items-center
-          md:justify-start
-          justify-center
-          text-gray-900
-        "
-      >
-        <span class="ml-3 text-xl">BlogSIte</span>
-      </a>
-      <p class="mt-2 text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
-        quam?
-      </p>
-    </div>
+   
     <div
       class="
-        flex-grow flex flex-wrap
+        flex-grow flex flex-wrap justify-center
         md:pl-20
         -mb-10
         md:mt-0
@@ -126,80 +107,6 @@
         text-center
       "
     >
-
-    <div>
-      
-    </div>
-      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2
-          class="
-            title-font
-            font-medium
-            text-gray-900
-            tracking-widest
-            text-sm
-            mb-3
-          "
-        >
-          Support
-        </h2>
-        <nav class="list-none mb-10">
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Donate</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Follow instagram</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Follow github</a
-            
-            >
-          </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Follow twiiter</a
-          </li>
-        </nav>
-      </div>
-
-      
-      <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2
-          class="
-            title-font
-            font-medium
-            text-gray-900
-            tracking-widest
-            text-sm
-            mb-3
-          "
-        >
-        Post Category
-        </h2>
-        <nav class="list-none mb-10">
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Teknology</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >Foot</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-gray-600 hover:text-gray-800"
-              >News</a
-            >
-          </li>
-
-        </nav>
-      </div>
     </div>
   </div>
   <div class="bg-gray-100">
