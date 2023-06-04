@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
     <link rel="stylesheet" href="/css/tal.css">
-    <link class="icon" rel="shortcut icon" href="/img/icon.png" type="image/x-icon">   
+    <link class="icon" rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
 />
 
@@ -17,17 +17,17 @@
       #menu-toggle:checked + #menu {
         display: block;
       }
-      body { 
+      body {
         font-family: 'Nunito', sans-serif;
       }
-      
+
   </style>
 </head>
 <body class="bg-gray-50">
 
 <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2 ">
     <div class="flex-1 flex justify-between items-center">
-  
+
   </div>
 
    <label for="menu-toggle" class="pointer-cursor lg:hidden block"><svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><title>menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg></label>
@@ -36,19 +36,25 @@
   <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
     <nav>
       <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" id="all_post" href="/all_post">All Post</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400  no-underline text-black" id="all_post" href="/all_post">Artikel</a></li>
         @if(\Illuminate\Support\Facades\Auth::check())
         @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
 
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-black" id="create_post" href="/admin/create_post">Create Post</a></li>
-        @endif 
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline 
-        text-balck" href="/logout">Logout</a></li>
-        @else 
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 font-bold no-underline text-balck" href="/login">Login</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400  no-underline text-black" id="create_post" href="/admin/create_post">Tambah Postingan</a></li>
+
         @endif
 
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2 font-bold no-underline text-black" id="home" href="/">Home</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400  no-underline
+        text-balck" href="/logout">Logout</a></li>
+        @else
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400  no-underline text-balck" href="/login">Login</a></li>
+        @endif
+
+
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2  no-underline text-black" id="tentang" href="/slk">Tentang</a></li>
+
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2  no-underline text-black" id="home" href="/">Home</a></li>
+
       </ul>
     </nav>
   </div>
@@ -68,7 +74,7 @@
         @endif
             @section('content')
             @show
-            
+
         </div>
 
 
@@ -95,7 +101,7 @@
       flex-wrap flex-col
     "
   >
-   
+
     <div
       class="
         flex-grow flex flex-wrap justify-center
@@ -160,12 +166,12 @@
     </div>
   </div>
 </footer>
-      
-
-        
 
 
-        
+
+
+
+
 
   <script src="/js/editor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
@@ -173,10 +179,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
-  
+
   <script src="/js/main.js"></script>
-  
+
 
 </body>
-</html> 
- 
+</html>

@@ -1,4 +1,4 @@
-   
+
 const form_data = document.querySelector('form')
 const msg = document.querySelector('#message')
 const inpt_content = document.querySelector('#content')
@@ -20,7 +20,7 @@ const get_title = document.querySelector('.title')
 const delete_post = document.querySelectorAll('.delete_post')
 
 
-function getClassNav(nav_elem) { 
+function getClassNav(nav_elem) {
   let class_elem = ''
   nav_elem.classList.forEach(elem => { class_elem += elem+' '})
   return class_elem + ' border-indigo-400'
@@ -28,10 +28,11 @@ function getClassNav(nav_elem) {
 
 if(url_nav == '/all_post') all_post_nav.classList = getClassNav(all_post_nav)
 else if (url_nav == '/') home_nav.classList = getClassNav(home_nav)
-else if (url_nav == '/admin/create_post') create_post_nav.classList = getClassNav(create_post_nav) 
+else if (url_nav == '/admin/create_post') create_post_nav.classList = getClassNav(create_post_nav)
 
 
-async function delete_img(files) { 
+
+async function delete_img(files) {
     let get_api = await fetch('/api/delete_img/'+files, {
       headers: {
         'Content-Type': 'application/json'
@@ -41,17 +42,17 @@ async function delete_img(files) {
 }
 
 
-if(msg) { 
+if(msg) {
   msg.addEventListener('click', () => {msg.style.display = "none"})
   setTimeout(() => { msg.style.display = "none" }, 10000)
 }
 
-get_all_content.forEach((elem, index) => { 
+get_all_content.forEach((elem, index) => {
         let text = JSON.parse(elem.innerHTML)
-        if(delete_post[index]) { 
-            delete_post[index].addEventListener('click', ()=> { 
-              for(data of text) { 
-                if(data.type == 'image') { 
+        if(delete_post[index]) {
+            delete_post[index].addEventListener('click', ()=> {
+              for(data of text) {
+                if(data.type == 'image') {
                   let img_name = String(data.data.file.url).replace('/img/blog/', '')
                   delete_img(img_name)
                 }
@@ -76,30 +77,30 @@ if(inpt_content == null || inpt_content.value == "") data_editor
 else {
         let data_content_parser = JSON.parse(inpt_content.value)
         data_editor.push(data_content_parser)
-      } 
+      }
 
-      
+
 let data_content = []
-if(get_content_detail) { 
+if(get_content_detail) {
 
     const get_content = JSON.parse(get_content_detail.innerText)
-    get_content.forEach((data) => { 
-        if(data.type == 'paragraph') data_content.push(`<p class="my-4"> ${data.data.text} </p>`) 
+    get_content.forEach((data) => {
+        if(data.type == 'paragraph') data_content.push(`<p class="my-4"> ${data.data.text} </p>`)
         if(data.type == 'image'){
             data_content.push(` <div class="flex justify-center mb-16">
                                     <img src='${data.data.file.url}' class="cursor-pointer" alt='${data.data.caption}'/>
                                     </div>`)
             icon.setAttribute('href', data.data.file.url)
-          
 
-          }     
-        if(data.type == 'header') { 
+
+          }
+        if(data.type == 'header') {
             for(let h =1; h<7; h++) {
               if(h == data.data.level)  data_content.push(`<h${h} class="text-2xl mb-2 font-semibold"> ${data.data.text} </h${h}>`)
-            }    
+            }
           }
 
-        if(data.type == 'list') { 
+        if(data.type == 'list') {
               let item_list = ''
               data.data.items.forEach((item) => {
                   item_list += `<li> ${item} </li>`
@@ -108,74 +109,78 @@ if(get_content_detail) {
             }
         })
 
-    data_content.forEach((elem => { 
+    data_content.forEach((elem => {
         articel.innerHTML += elem
       }))
 
       const link_content = articel.querySelectorAll('a')
-      if(link_content) { 
+      if(link_content) {
         link_content.forEach((elem => { elem.classList = 'text-blue-900 hover:underline' }))
-        
+
       }
 
-      
+
       document.title = get_title.innerText
-      content_ren.forEach((elem, index) => { 
+      content_ren.forEach((elem, index) => {
           let text = JSON.parse(elem.innerHTML)
-          for(let data of text) { 
-              if(data.type == 'image') { 
+          for(let data of text) {
+              if(data.type == 'image') {
                   image_ren[index].setAttribute('src',data.data.file.url)
                   break
-          }else { 
+          }else {
               image_ren[index].setAttribute('src', "/aaa.png")
           }
           }
           for(let data of text) {
-  
+
             if(data.type == 'paragraph') {
+
               let text_content =  data.data.text
-                if(text_content.length > 120) show_content_ren[index].innerHTML =text_content.substring(0, 50) + '...'
+                if(text_content.length > 50) show_content_ren[index].innerHTML =text_content.substring(0, 30) + '...'
                 else show_content_ren[index].innerHTML =text_content
+
                 break
               }
             }
-  
-          })
-        
-      }
-      
-        
 
-if(editor_js) { 
+          })
+
+      }
+
+
+
+if(editor_js) {
 
 const editor = new EditorJS({
-    
+
       readOnly: false,
-     
+
       holder: 'editorjs',
 
       tools: {
-      
+
         header: {
           class: Header,
-          inlineToolbar: ['link'],
+
           config: {
-            placeholder: 'Header'
+            placeholder: 'Header',
+            levels: [2, 3, 4],
+            defaultLevel: 3
           },
           shortcut: 'CMD+SHIFT+H'
         },
 
-        
-        image:{ 
-          
-          class: ImageTool, 
+
+        image:{
+
+          class: ImageTool,
           config: {
         endpoints: {
-          byFile: '/api/upload', 
+          byFile: '/api/upload',
           byUrl: '/api/upload'
         }
       }
-        
+
         } ,
 
         list: {
@@ -184,16 +189,18 @@ const editor = new EditorJS({
           shortcut: 'CMD+SHIFT+L'
         },
 
-     
+
 
       },
 
       data: {blocks: data_editor[0]},
     });
 
-form_data.addEventListener('submit', (e) => { 
-        editor.save().then((OptputData => { 
-          inpt_content.value = JSON.stringify(OptputData.blocks)   
+form_data.addEventListener('submit', (e) => {
+
+
+        editor.save().then((OptputData => {
+          inpt_content.value = JSON.stringify(OptputData.blocks)
         }))
       })
 }
